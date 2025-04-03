@@ -1,0 +1,12 @@
+{
+    "profiles": {
+        "WordFrequencyCounter": {
+            "commandName": "Project",
+            "commandLineArgs": "",
+            "workingDirectory": "$(ProjectDir)",
+            "environmentVariables": {
+                "INPUT_FILE": "input.txt"
+            }
+        }
+    }
+}
