@@ -10,7 +10,6 @@ namespace WordFrequencyCounter
     {
         static void Main(string[] args)
         {
-            // 1. Определение входного файла:
             string inputFilePath = GetInputFilePath(args);
             if (!File.Exists(inputFilePath))
             {
@@ -18,7 +17,6 @@ namespace WordFrequencyCounter
                 return;
             }
 
-            // 2. Чтение содержимого файла
             string text;
             try
             {
@@ -30,21 +28,17 @@ namespace WordFrequencyCounter
                 return;
             }
 
-            // 3. Подсчёт частот слов
             IWordFrequencyCalculator calculator = new WordFrequencyCalculator();
             Dictionary<string, int> wordCounts = calculator.CalculateFrequencies(text);
 
-            // 4. Генерация CSV контента
             ICsvGenerator csvGenerator = new CsvGenerator();
             string csvContent = csvGenerator.GenerateCsvContent(wordCounts);
 
-            // 5. Определение пути для CSV-файла: тот же каталог, что и входной файл, с расширением .csv
             string directory = Path.GetDirectoryName(inputFilePath);
             if (string.IsNullOrEmpty(directory))
                 directory = Directory.GetCurrentDirectory();
             string outputFilePath = Path.Combine(directory, Path.GetFileNameWithoutExtension(inputFilePath) + ".csv");
 
-            // 6. Запись CSV-файла
             try
             {
                 File.WriteAllText(outputFilePath, csvContent, Encoding.UTF8);

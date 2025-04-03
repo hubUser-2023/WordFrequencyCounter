@@ -7,10 +7,6 @@ namespace WordFrequencyCounter
 {
     public interface ICsvGenerator
     {
-        /// <summary>
-        /// Генерирует CSV контент на основе словаря с частотами.
-        /// Первая строка – заголовок, далее строки формата: слово, частота, частота (%)
-        /// </summary>
         string GenerateCsvContent(Dictionary<string, int> wordCounts);
     }
 
@@ -29,7 +25,6 @@ namespace WordFrequencyCounter
                                         .ToList();
 
             var sb = new StringBuilder();
-            // Запись заголовка CSV
             sb.AppendLine("Слово,Частота,Частота (%)");
 
             foreach (var pair in sortedWords)

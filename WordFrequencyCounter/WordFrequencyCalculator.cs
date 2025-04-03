@@ -40,7 +40,6 @@ namespace WordFrequencyCounter
                 }
             }
 
-            // Обработка последнего слова, если строка не заканчивается разделителем
             if (sb.Length > 0)
             {
                 string word = sb.ToString().ToLowerInvariant();
